@@ -217,6 +217,31 @@ img{ -webkit-user-drag:none; user-select:none; }
 .keypad button.wide{ font-size:.9rem; }
 .lock-hint{ margin-top:20px; font-family:'Caveat',cursive; font-size:1.3rem; color:var(--blush); }
 
+.lock-scrap{
+  position:absolute;
+  z-index:3;
+  width:95px;
+  height:auto;
+  pointer-events:none;
+  filter:drop-shadow(0 6px 8px rgba(0,0,0,.35));
+}
+
+.lock-scrap.left{
+  left:-40px;
+  bottom:-34px;
+  transform:rotate(-8deg);
+}
+
+.lock-scrap.right{
+  right:-32px;
+  top:-30px;
+  transform:rotate(10deg);
+}
+
+/* ============================================================
+   SITE CONTENT
+============================================================ */
+
 /* ============================================================
    SITE CONTENT
 ============================================================ */
@@ -288,31 +313,13 @@ footer .from{ margin-top:8px; font-size:1.05rem; color:var(--ink-soft); }
     <div style="position:relative;">
       <div class="polaroid-wrap">
         <div class="polaroid" style="width:260px; height:300px; transform:rotate(-4deg);">
-          <img src="https://i.ibb.co/cKDJG7Jz/s3.jpg" alt="s3"> style="width:100%; height:236px;">
+          <img src="https://i.ibb.co/cKDJG7Jz/s3.jpg" alt="s3" style="width:100%; height:236px;">
         </div>
       </div>
-      <!-- bow -->
-      <svg class="bow" style="width:90px; top:-30px; right:-32px; transform:rotate(10deg);" viewBox="0 0 100 60">
-        <path d="M50 30 C42 8 6 10 8 30 C6 50 42 52 50 30 C58 52 94 50 92 30 C94 10 58 8 50 30 Z" fill="url(#satinBlush)" stroke="#8a4a54" stroke-width="1"/>
-        <rect x="43" y="24" width="14" height="12" rx="2" fill="url(#satinBlush)" stroke="#8a4a54" stroke-width="1"/>
-      </svg>
-      <!-- teddy sticker -->
-      <svg style="position:absolute; width:100px; bottom:-34px; left:-42px; filter:drop-shadow(0 6px 8px rgba(0,0,0,.35));" viewBox="0 0 100 100">
-        <g filter="url(#watercolor)">
-          <ellipse cx="50" cy="66" rx="30" ry="26" fill="#c9a377"/>
-          <circle cx="50" cy="34" r="24" fill="#d4b48c"/>
-          <circle cx="27" cy="16" r="9" fill="#d4b48c"/>
-          <circle cx="73" cy="16" r="9" fill="#d4b48c"/>
-        </g>
-        <circle cx="27" cy="16" r="9" fill="none" stroke="#fff" stroke-width="2.5"/>
-        <circle cx="73" cy="16" r="9" fill="none" stroke="#fff" stroke-width="2.5"/>
-        <circle cx="50" cy="34" r="24" fill="none" stroke="#fff" stroke-width="2.5"/>
-        <ellipse cx="50" cy="66" rx="30" ry="26" fill="none" stroke="#fff" stroke-width="2.5"/>
-        <circle cx="41" cy="36" r="2.6" fill="#4a3527"/>
-        <circle cx="59" cy="36" r="2.6" fill="#4a3527"/>
-        <ellipse cx="50" cy="44" rx="7" ry="5" fill="#f0cfc8"/>
-        <path d="M44 46 Q50 51 56 46" stroke="#4a3527" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg>
+      <!-- bow and flower -->
+<img src="flower.webp" class="lock-scrap left" alt="">
+<img src="bow.webp" class="lock-scrap right" alt="">
+
     </div>
     <div class="lock-right">
       <h2 class="cursive" style="font-size:2.2rem;">Enter the passcode</h2>
