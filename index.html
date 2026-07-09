@@ -168,10 +168,13 @@ img{ -webkit-user-drag:none; user-select:none; }
   font-family:'Caveat',cursive; font-size:1.15rem; color:var(--ink-soft);
 }
 .photo-slot{
-  width:100%; display:flex; align-items:center; justify-content:center;
-  text-align:center; padding:10px; background:linear-gradient(160deg,#f6ede0,#eddfc7);
-  border:1.5px dashed var(--blush-2); font-family:'Caveat',cursive; font-size:1.05rem;
-  color:var(--blush-dark); line-height:1.2;
+  position:absolute;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  background:linear-gradient(160deg,#f6ede0,#eddfc7);
 }
 
 /* ============================================================
@@ -366,13 +369,15 @@ footer .from{ margin-top:8px; font-size:1.05rem; color:var(--ink-soft); }
 
       <!-- frame 1 : butterfly & botanical -->
       <div class="piece frame-card" style="top:30px; left:-250px; width:200px; transform:rotate(-6deg); z-index:3;">
-        <img class="frame-img" src="frame-butterfly.png" alt="">
-           <div class="photo-slot" style="left:6%; top:15%; width:88%; height:46%; display:flex; align-items:center; justify-content:center;">
+  <img class="frame-img" src="frame-butterfly.png" alt="">
+
+  <div class="photo-slot" style="left:6%; top:15%; width:88%; height:46%;">
     <img src="s1.png" alt="Photo"
-         style="max-width:100%; max-height:100%; object-fit:contain; display:block;">
+         style="width:100%; height:100%; object-fit:contain; display:block;">
+  </div>
+
+  <div class="frame-caption">that one afternoon ♡</div>
 </div>
-        <div class="frame-caption">that one afternoon ♡</div>
-       </div>
 
       <!-- frame 2 : teddy & books -->
       <div class="piece frame-card" style="top:60px; left:440px; width:200px; transform:rotate(6deg); z-index:4;">
