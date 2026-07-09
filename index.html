@@ -152,55 +152,6 @@ img{ -webkit-user-drag:none; user-select:none; }
   height:1000px; margin:0 auto;
 }
  /* Fix scrapbook frame positions on phones */
-@media (max-width: 480px){
-
-  .mem-canvas{
-    max-width:100%;
-    width:100%;
-    height:860px;
-    transform:none;
-  }
-
-  /* frame 1 */
-  .mem-canvas .piece:nth-child(1){
-    left:10px !important;
-    top:20px !important;
-  }
-
-  /* frame 2 */
-  .mem-canvas .piece:nth-child(2){
-    left:145px !important;
-    top:70px !important;
-  }
-
-  /* frame 3 */
-  .mem-canvas .piece:nth-child(3){
-    left:75px !important;
-    top:250px !important;
-  }
-
-  /* frame 4 */
-  .mem-canvas .piece:nth-child(4){
-    left:170px !important;
-    top:470px !important;
-  }
-
-  /* frame 5 */
-  .mem-canvas .piece:nth-child(5){
-    left:15px !important;
-    top:455px !important;
-  }
-
-  /* frame 6 */
-  .mem-canvas .piece:nth-child(6){
-    left:95px !important;
-    top:640px !important;
-  }
-
-  .frame-card{
-    width:150px !important;
-  }
-}
 
 
 .mem-canvas .piece{ position:absolute; }
@@ -311,7 +262,78 @@ footer{ text-align:center; padding:80px 24px 110px; position:relative; z-index:2
 footer .cursive{ font-size:2.1rem; color:var(--blush-dark); }
 footer .from{ margin-top:8px; font-size:1.05rem; color:var(--ink-soft); }
 
-@media (max-width:640px){ .lock-card{ flex-direction:column; } }
+/* ============================================================
+   📱 MOBILE & TABLET FIXES
+============================================================ */
+@media (max-width: 900px) {
+  /* -- 1. Wishes Section Fix -- */
+  .canvas {
+    min-height: auto !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 40px;
+  }
+  .canvas div.piece {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    margin: 0 !important;
+    width: 90% !important;
+    max-width: 340px !important;
+  }
+  svg.piece {
+    position: relative !important;
+    top: auto !important; right: auto !important;
+    width: 120px !important;
+    margin: 20px auto !important;
+  }
+
+  /* -- 2. Memories Section Fix -- */
+  .mem-canvas {
+    height: auto !important;
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 20px 0;
+    transform: none !important;
+  }
+  .mem-canvas .piece {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 85% !important;
+    max-width: 320px !important;
+  }
+
+  .mem-canvas .piece:nth-child(odd) { transform: rotate(-3deg) translateX(-3%) !important; }
+  .mem-canvas .piece:nth-child(even) { transform: rotate(4deg) translateX(3%) !important; }
+
+  .canvas div.piece:nth-child(odd) { transform: rotate(2deg) translateX(2%) !important; }
+  .canvas div.piece:nth-child(even) { transform: rotate(-2deg) translateX(-2%) !important; }
+
+  /* -- 3. Lock Screen Fix -- */
+  .lock-card { flex-direction: column; gap: 30px; }
+  .polaroid-wrap .polaroid { width: 220px !important; height: auto !important; padding-bottom: 40px !important;}
+  .polaroid-wrap .polaroid img { height: 200px !important; }
+  .lock-scrap.left { left: -10px; bottom: -20px; width: 70px; }
+  .lock-scrap.right { right: -10px; top: -20px; width: 70px; }
+  .keypad { gap: 10px; }
+  .keypad button { width: 55px; height: 55px; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 3.2rem; }
+  .hero p.sub { font-size: 1.05rem; }
+  .section-head h2 { font-size: 2.2rem; }
+  .gifts-row { gap: 20px; }
+  .tag-item { width: 150px; }
+}
 </style>
 </head>
 <body>
