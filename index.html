@@ -145,6 +145,35 @@ img{ -webkit-user-drag:none; user-select:none; }
   .canvas .piece{ position:absolute; margin:0; max-width:none; }
 }
 
+/* memories canvas: built phone-first, stays a narrow overlapping
+   collage at any screen size instead of stretching wide on desktop */
+.mem-canvas{
+  position:relative; z-index:2; width:100%; max-width:400px;
+  height:1000px; margin:0 auto;
+}
+.mem-canvas .piece{ position:absolute; }
+
+/* frame-card: your uploaded scrapbook background IS the frame;
+   the photo-slot sits on top, inset inside its blank paper area */
+.frame-card{ filter:drop-shadow(0 10px 18px rgba(60,40,25,.28)); }
+.frame-img{ display:block; width:100%; height:auto; position:relative; z-index:1; }
+.frame-card .photo-slot{
+  position:absolute; z-index:2; border:none;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  padding:6px; background:linear-gradient(160deg,#f6ede0,#eddfc7);
+  font-family:'Caveat',cursive; font-size:.95rem; color:var(--blush-dark); line-height:1.15;
+}
+.frame-caption{
+  position:relative; z-index:2; text-align:center; margin-top:6px;
+  font-family:'Caveat',cursive; font-size:1.15rem; color:var(--ink-soft);
+}
+.photo-slot{
+  width:100%; display:flex; align-items:center; justify-content:center;
+  text-align:center; padding:10px; background:linear-gradient(160deg,#f6ede0,#eddfc7);
+  border:1.5px dashed var(--blush-2); font-family:'Caveat',cursive; font-size:1.05rem;
+  color:var(--blush-dark); line-height:1.2;
+}
+
 /* ============================================================
    LOCK SCREEN
 ============================================================ */
@@ -316,92 +345,67 @@ footer .from{ margin-top:8px; font-size:1.05rem; color:var(--ink-soft); }
     <div class="scroll-cue">↓ scroll for memories, wishes &amp; gifts</div>
   </section>
 
-  <!-- ---------- MEMORIES (asymmetric collage board) ---------- -->
+  <!-- ---------- MEMORIES (6 photo frames using your scrapbook backgrounds) ---------- -->
   <div class="board">
     <div class="section-head">
       <span class="eyebrow cursive">memories</span>
       <h2>moments worth <em>keeping</em></h2>
     </div>
 
-    <div class="canvas" style="--canvas-h:900px;">
+    <!--
+      NOTE FOR KRITI: each "your photo here" box sits ON TOP of the frame image,
+      inset inside its blank paper area. To swap in a real photo, replace the div's
+      text content with an <img src="yourphoto.jpg" style="width:100%;height:100%;
+      object-fit:cover;"> — keep the div's size/position exactly as is so it still
+      lines up with the flowers/bow/teddy printed on the frame.
+      Keep frame-butterfly.png, frame-teddy.png, frame-gingham.jpg,
+      frame-pinkfloral-1.png, frame-pinkfloral-2.png and frame-pinkfloral-3.png
+      in this same folder as this HTML file.
+    -->
+    <div class="mem-canvas">
 
-      <div class="piece" style="top:0; left:2%; transform:rotate(-6deg); z-index:3;">
-        <div class="polaroid-wrap">
-          <div class="polaroid" style="width:270px;">
-            <img src="https://picsum.photos/seed/mem1/380/380" style="width:100%; height:240px;">
-            <figcaption>that one afternoon ♡</figcaption>
-          </div>
-        </div>
-        <svg class="bow" style="width:80px; top:-26px; right:-28px; transform:rotate(8deg);" viewBox="0 0 100 60">
-          <path d="M50 30 C42 8 6 10 8 30 C6 50 42 52 50 30 C58 52 94 50 92 30 C94 10 58 8 50 30 Z" fill="url(#satinBlush)" stroke="#8a4a54" stroke-width="1"/>
-          <rect x="43" y="24" width="14" height="12" rx="2" fill="url(#satinBlush)" stroke="#8a4a54" stroke-width="1"/>
-        </svg>
+      <!-- frame 1 : butterfly & botanical -->
+      <div class="piece frame-card" style="top:0px; left:4px; width:168px; transform:rotate(-6deg); z-index:3;">
+        <img class="frame-img" src="frame-butterfly.png" alt="">
+        <div class="photo-slot" style="left:6%; top:15%; width:88%; height:46%;">your photo here 🤍</div>
+        <div class="frame-caption">that one afternoon ♡</div>
       </div>
 
-      <div class="piece" style="top:60px; left:38%; transform:rotate(4deg); z-index:4;">
-        <div class="polaroid-wrap">
-          <div class="polaroid" style="width:240px;">
-            <img src="https://picsum.photos/seed/mem2/380/380" style="width:100%; height:210px;">
-            <figcaption>us, being silly</figcaption>
-          </div>
-        </div>
-        <div class="washi blush" style="width:90px; top:-14px; left:50%; transform:translateX(-50%) rotate(-6deg);"></div>
+      <!-- frame 2 : teddy & books -->
+      <div class="piece frame-card" style="top:80px; right:2px; width:168px; transform:rotate(6deg); z-index:4;">
+        <img class="frame-img" src="frame-teddy.png" alt="">
+        <div class="photo-slot" style="left:30%; top:29%; width:58%; height:45%;">your photo here 🤍</div>
+        <div class="frame-caption">us, being silly</div>
       </div>
 
-      <div class="piece" style="top:340px; left:6%; transform:rotate(3deg); z-index:2;">
-        <div class="polaroid-wrap">
-          <div class="polaroid" style="width:230px;">
-            <img src="https://picsum.photos/seed/mem3/380/380" style="width:100%; height:200px;">
-            <figcaption>the best kind of day</figcaption>
-          </div>
-        </div>
+      <!-- frame 3 : gingham & hearts -->
+      <div class="piece frame-card" style="top:340px; left:0px; width:168px; transform:rotate(4deg); z-index:2;">
+        <img class="frame-img" src="frame-gingham.jpg" alt="">
+        <div class="photo-slot" style="left:14%; top:22%; width:70%; height:56%;">your photo here 🤍</div>
+        <div class="frame-caption">the best kind of day</div>
       </div>
 
-      <div class="piece" style="top:380px; left:52%; transform:rotate(-5deg); z-index:3;">
-        <div class="polaroid-wrap">
-          <div class="polaroid" style="width:250px;">
-            <img src="https://picsum.photos/seed/mem4/380/380" style="width:100%; height:220px;">
-            <figcaption>a favourite of mine</figcaption>
-          </div>
-        </div>
-        <svg class="bow" style="width:70px; bottom:-24px; left:-26px; transform:rotate(-16deg);" viewBox="0 0 100 60">
-          <path d="M50 30 C42 8 6 10 8 30 C6 50 42 52 50 30 C58 52 94 50 92 30 C94 10 58 8 50 30 Z" fill="url(#satinKraft)" stroke="#5c4028" stroke-width="1"/>
-          <rect x="43" y="24" width="14" height="12" rx="2" fill="url(#satinKraft)" stroke="#5c4028" stroke-width="1"/>
-        </svg>
+      <!-- frame 4 : pink floral 1 -->
+      <div class="piece frame-card" style="top:400px; right:4px; width:168px; transform:rotate(-5deg); z-index:3;">
+        <img class="frame-img" src="frame-pinkfloral-1.png" alt="">
+        <div class="photo-slot" style="left:10%; top:20%; width:76%; height:60%;">your photo here 🤍</div>
+        <div class="frame-caption">a favourite of mine</div>
       </div>
 
-      <!-- dried flower bouquet corner -->
-      <svg class="piece" style="top:640px; left:2%; width:150px;" viewBox="0 0 150 200">
-        <g stroke="#8a6240" stroke-width="2" fill="none">
-          <path d="M75 195 C70 150 80 110 75 60"/>
-          <path d="M75 195 C60 150 55 120 40 90"/>
-          <path d="M75 195 C90 150 95 120 110 90"/>
-        </g>
-        <g fill="#d9b7ab">
-          <circle cx="75" cy="55" r="7"/><circle cx="62" cy="66" r="6"/><circle cx="88" cy="66" r="6"/>
-          <circle cx="38" cy="88" r="5"/><circle cx="110" cy="88" r="5"/><circle cx="50" cy="76" r="5"/><circle cx="98" cy="76" r="5"/>
-        </g>
-        <g fill="#c98a94" opacity=".8">
-          <circle cx="75" cy="42" r="4"/><circle cx="66" cy="52" r="3"/><circle cx="84" cy="52" r="3"/>
-        </g>
-      </svg>
+      <!-- frame 5 : pink floral, love you -->
+      <div class="piece frame-card" style="top:660px; left:6px; width:168px; transform:rotate(-3deg); z-index:2;">
+        <img class="frame-img" src="frame-pinkfloral-2.png" alt="">
+        <div class="photo-slot" style="left:16%; top:22%; width:70%; height:58%;">your photo here 🤍</div>
+        <div class="frame-caption">good times ♡</div>
+      </div>
 
-      <!-- teddy peeking corner -->
-      <svg class="piece" style="top:700px; right:4%; width:130px; filter:drop-shadow(0 6px 8px rgba(0,0,0,.25));" viewBox="0 0 100 100">
-        <g filter="url(#watercolor)">
-          <ellipse cx="50" cy="66" rx="30" ry="26" fill="#c9a377"/>
-          <circle cx="50" cy="34" r="24" fill="#d4b48c"/>
-          <circle cx="27" cy="16" r="9" fill="#d4b48c"/>
-          <circle cx="73" cy="16" r="9" fill="#d4b48c"/>
-        </g>
-        <circle cx="27" cy="16" r="9" fill="none" stroke="#fff" stroke-width="2.5"/>
-        <circle cx="73" cy="16" r="9" fill="none" stroke="#fff" stroke-width="2.5"/>
-        <circle cx="50" cy="34" r="24" fill="none" stroke="#fff" stroke-width="2.5"/>
-        <ellipse cx="50" cy="66" rx="30" ry="26" fill="none" stroke="#fff" stroke-width="2.5"/>
-        <circle cx="41" cy="36" r="2.6" fill="#4a3527"/><circle cx="59" cy="36" r="2.6" fill="#4a3527"/>
-        <ellipse cx="50" cy="44" rx="7" ry="5" fill="#f0cfc8"/>
-        <path d="M44 46 Q50 51 56 46" stroke="#4a3527" stroke-width="2" fill="none" stroke-linecap="round"/>
-      </svg>
+      <!-- frame 6 : pink floral, clean -->
+      <div class="piece frame-card" style="top:720px; right:2px; width:168px; transform:rotate(5deg); z-index:3;">
+        <img class="frame-img" src="frame-pinkfloral-3.png" alt="">
+        <div class="photo-slot" style="left:14%; top:26%; width:72%; height:56%;">your photo here 🤍</div>
+        <div class="frame-caption">memories ♡</div>
+      </div>
+
     </div>
   </div>
 
