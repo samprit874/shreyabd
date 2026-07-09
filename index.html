@@ -262,6 +262,73 @@ footer{ text-align:center; padding:80px 24px 110px; position:relative; z-index:2
 footer .cursive{ font-size:2.1rem; color:var(--blush-dark); }
 footer .from{ margin-top:8px; font-size:1.05rem; color:var(--ink-soft); }
 
+   /* ============================================================
+   🔒 MOBILE FIX FOR THE 1207 LOCK SCREEN 
+============================================================ */
+@media (max-width: 600px) {
+  /* Lock the background to exactly the height of the phone screen */
+  #lock {
+    padding: 10px;
+    height: 100vh;
+    height: 100dvh; /* Adjusts for mobile browser address bars */
+    overflow: hidden; 
+  }
+  
+  /* Stack the photo and the keypad vertically and tighten the gap */
+  .lock-card {
+    flex-direction: column !important;
+    gap: 15px !important;
+    width: 100%;
+    margin-top: -3vh; /* Pulls everything up slightly to center it */
+  }
+
+  /* 1. Shrink the Polaroid Photo */
+  .polaroid-wrap .polaroid {
+    width: 140px !important; 
+    height: auto !important;
+    padding: 8px 8px 30px 8px !important;
+  }
+  .polaroid-wrap .polaroid img {
+    height: 130px !important; /* Makes the image square-ish */
+  }
+  
+  /* Shrink the flower and bow decorations on the photo */
+  .lock-scrap.left { left: -15px; bottom: -15px; width: 60px !important; }
+  .lock-scrap.right { right: -15px; top: -15px; width: 60px !important; }
+
+  /* 2. Shrink the "Enter passcode" text & empty boxes */
+  .lock-right h2 {
+    font-size: 1.4rem !important;
+    margin-bottom: 10px !important;
+  }
+  .pin-boxes {
+    gap: 8px !important;
+    margin-bottom: 15px !important;
+  }
+  .pin-boxes .box {
+    width: 45px !important;
+    height: 50px !important;
+    font-size: 1.4rem !important;
+  }
+
+  /* 3. Shrink the Keypad Buttons so they don't fall off the bottom */
+  .keypad {
+    grid-template-columns: repeat(3, 55px) !important;
+    gap: 10px !important;
+  }
+  .keypad button {
+    width: 55px !important;
+    height: 55px !important;
+    font-size: 1.2rem !important;
+  }
+
+  /* Tighten the hint text */
+  .lock-hint {
+    font-size: 1.1rem !important;
+    margin-top: 10px !important;
+  }
+}
+
 /* ============================================================
    📱 MOBILE & TABLET FIXES
 ============================================================ */
@@ -581,7 +648,7 @@ footer .from{ margin-top:8px; font-size:1.05rem; color:var(--ink-soft); }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.2/confetti.browser.min.js"></script>
 <script>
   // ================== EDIT THIS ==================
-  const PASSCODE = "1207";
+  const PASSCODE = "0143";
   // =================================================
 
   const boxesEl = document.getElementById('pin-boxes');
